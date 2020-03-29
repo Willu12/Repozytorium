@@ -15,12 +15,4 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        if(col.gameObject.tag== "Wall")
-        {
-            Debug.Log("Beka z was");
-        }
-    }
 }
