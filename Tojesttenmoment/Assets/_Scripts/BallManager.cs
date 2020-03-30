@@ -24,8 +24,8 @@ public class BallManager : MonoBehaviour
     {
         if (col.gameObject.tag == "Wall")
         {
-            r.AddForce(new Vector3(0.7f*boost,0.4f*slow,0));
-            boost += 0.1f;
+            r.AddForce(new Vector3(0.7f*boost,0.3f*slow,0));
+            boost += 0.6f;
             slow -= 0.2f;
             hit = false;
             ally.SetActive(true);
@@ -43,7 +43,7 @@ public class BallManager : MonoBehaviour
     {
         if (hit)
         {
-            r.AddForce(new Vector3(-0.7f*boost, 0.4f*slow, 0));
+            r.AddForce(new Vector3(-0.7f*boost, 0.3f*slow, 0));
             boost += 0.6f;
             slow -= 0.05f;
         }
