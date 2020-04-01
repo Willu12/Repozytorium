@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 131980301}
   - component: {fileID: 131980300}
   - component: {fileID: 131980299}
+  - component: {fileID: 131980303}
   - component: {fileID: 131980298}
   - component: {fileID: 131980297}
   - component: {fileID: 131980302}
@@ -413,8 +414,8 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131980296}
-  m_Material: {fileID: 13400000, guid: 6f37a402b4ae48945865fcd14c7fc04a, type: 2}
-  m_IsTrigger: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2
@@ -495,6 +496,19 @@ MonoBehaviour:
   enemy: {fileID: 13894571}
   ally: {fileID: 1563256371}
   tmp: {fileID: 116011440}
+--- !u!135 &131980303
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131980296}
+  m_Material: {fileID: 13400000, guid: 6f37a402b4ae48945865fcd14c7fc04a, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.50000006
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &162551844
 GameObject:
   m_ObjectHideFlags: 0

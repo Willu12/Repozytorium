@@ -26,14 +26,29 @@ public class BallManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(hit);
+
     }
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Wall")
         {
             rb.velocity = Vector3.zero;
-            rb.AddForce(new Vector3(1.5f*change,-0.3f*change, Random.Range(-0.1f, +0.1f)));
+            
+            rb.AddForce(new Vector3(1.5f*change, -0.3f, 0f));
+
+            //BALANCER
+            float posz = transform.position.z;
+            if (posz<1.5f && posz>-1.5f)
+                zbalancer(-0.35f, 0.35f);
+            else if (posz<-1.5f && posz>-3f)
+                zbalancer(0f, 0.4f);
+            else if (posz>1.5f && posz<3f)
+                zbalancer(-0.4f, 0f);
+            else if (posz<-3f)
+                zbalancer(0.1f, 0.5f);
+            else if (posz>3f)
+                zbalancer(-0.1f, -0.5f);
+            
             Physics.gravity = new Vector3(change, change, 1f);
             change += 0.025f;
             hit = false;
@@ -47,6 +62,12 @@ public class BallManager : MonoBehaviour
             enemy.SetActive(true);        
         }
     }
+
+    private void zbalancer(float rfrom, float rto)
+    {
+        rb.AddForce(new Vector3(0f, 0f, Random.Range(rfrom, rto)));
+    }
+
     private void OnMouseDown()
     {
         if (hit)
@@ -57,8 +78,23 @@ public class BallManager : MonoBehaviour
                 textMesH.text = points.ToString();
             }
             rb.useGravity = true;
+
             rb.velocity = Vector3.zero;
-            rb.AddForce(new Vector3(-1.5f*change, -0.3f*change, Random.Range(-0.1f, +0.1f)));
+            rb.AddForce(new Vector3(-1.5f*change, -0.3f, 0));
+
+            //Z BALANCER
+            float posz = transform.position.z;
+            if (posz<1.5f && posz>-1.5f)
+                zbalancer(-0.35f, 0.35f);
+            else if (posz<-1.5f && posz>-3f)
+                zbalancer(0f, 0.4f);
+            else if (posz>1.5f && posz<3f)
+                zbalancer(-0.4f, 0f);
+            else if (posz<-3f)
+                zbalancer(0.1f, 0.5f);
+            else if (posz>3f)
+                zbalancer(-0.1f, -0.5f);
+            
             ally.SetActive(false);
             hit = false;
         }
