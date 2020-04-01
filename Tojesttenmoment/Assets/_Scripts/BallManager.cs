@@ -60,6 +60,7 @@ public class BallManager : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.AddForce(new Vector3(-1.5f*change, -0.3f*change, Random.Range(-0.1f, +0.1f)));
             ally.SetActive(false);
+            hit = false;
         }
     }
 }
