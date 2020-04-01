@@ -5,14 +5,14 @@ using UnityEngine;
 public class BallManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    Rigidbody r;
+    Rigidbody rb;
     bool hit;
     public GameObject enemy, ally;
     float boost = 1f, slow=1f;
     void Start()
     {
         hit = false;
-        r = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -24,9 +24,10 @@ public class BallManager : MonoBehaviour
     {
         if (col.gameObject.tag == "Wall")
         {
-            r.AddForce(new Vector3(0.7f*boost,-0.3f*slow,0));
-            boost += 0.6f;
-            slow += 0.2f;
+            rb.velocity = Vector3.zero;
+            rb.AddForce(new Vector3(1.5f*boost,-0.3f*slow,Random.Range(-0.1f, +0.1f)));
+            boost += 0.025f;
+            slow += 0.025f;
             hit = false;
             ally.SetActive(true);
             enemy.SetActive(false);
@@ -35,17 +36,15 @@ public class BallManager : MonoBehaviour
         {
             hit = true;
             ally.SetActive(false);
-            enemy.SetActive(true);
-            
+            enemy.SetActive(true);        
         }
     }
     private void OnMouseDown()
     {
         if (hit)
         {
-            r.AddForce(new Vector3(-0.7f*boost,-0.3f*slow, 0));
-            boost += 0.6f;
-            slow += 0.05f;
+            rb.velocity = Vector3.zero;
+            rb.AddForce(new Vector3(-1.5f*boost,-0.3f*slow, Random.Range(-0.1f, +0.1f)));
         }
     }
 
