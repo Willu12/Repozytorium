@@ -415,6 +415,7 @@ MonoBehaviour:
   table: {fileID: 186144857}
   stmp: {fileID: 116011440}
   btmp: {fileID: 280811039}
+  change: 1
 --- !u!135 &131980303
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -982,10 +983,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023d038ebd3a1ee4f8a538f29f81f7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 131980301}
+  ball: {fileID: 131980296}
   xDetection: -3
   standardY: 0
-  smoothSpeed: 0.2
   playerCol: {fileID: 1563256371}
 --- !u!65 &369728355
 BoxCollider:

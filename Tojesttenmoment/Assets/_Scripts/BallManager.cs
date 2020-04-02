@@ -15,7 +15,7 @@ public class BallManager : MonoBehaviour
     bool hit;
     public GameObject enemy, ally, table, stmp, btmp;
     private TextMeshProUGUI scoreText, bestText;
-    float change = 1f;
+    public float change = 1f;
     int points=0, best;
     void Start()
     {

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BotMovement : MonoBehaviour
 {
-    public Transform ball;
+    public GameObject ball;
     public float xDetection, standardY;
     private Vector3 desiredPosition;
-    public float smoothSpeed = 0.2f;
+    private float smoothSpeed, change;
     public GameObject playerCol; //CHECK IF OBJECT IS ACTIVE TO TRACK OR NOT TO TRACK BALL POSITION
 
 
@@ -18,15 +18,17 @@ public class BotMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        change = ball.GetComponent<BallManager>().change;
+
         if (ball.transform.position.x < xDetection && !playerCol.activeSelf)
         {
             desiredPosition = new Vector3(transform.position.x, ball.transform.position.y, ball.transform.position.z);
-            smoothSpeed = 0.2f;
+            smoothSpeed = 0.2f*change;
         }
         else
         {
             desiredPosition = new Vector3(transform.position.x, standardY, 0f);
-            smoothSpeed = 0.03f;
+            smoothSpeed = 0.03f*change;
         }
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
        
