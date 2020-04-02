@@ -402,14 +402,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481610e9453db9944b3a075e40a603cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit1: {fileID: 8300000, guid: c7ad37a979b68364bb853828ba665a11, type: 3}
+  hit1: {fileID: 8300000, guid: fded787a3e0298645a752679703c66db, type: 3}
   hit2: {fileID: 8300000, guid: e95a0141de15b5b46934f48be9f61787, type: 3}
   hit3: {fileID: 8300000, guid: 31903ce792dd5054db392664847c0cde, type: 3}
   hit4: {fileID: 8300000, guid: 300c62abfcd5273408ab33db7b0eb067, type: 3}
   impact1: {fileID: 8300000, guid: 19fa3edf4028a6648bd4aa004912b923, type: 3}
   impact2: {fileID: 8300000, guid: 73fdc5f5ee5fcd44e9f91953ab291793, type: 3}
   impact3: {fileID: 8300000, guid: b0e248aceb02e0c4aa61647cedddee5c, type: 3}
-  impact4: {fileID: 8300000, guid: 4185da3df757c72429166739afef9d43, type: 3}
+  impact4: {fileID: 8300000, guid: 73fdc5f5ee5fcd44e9f91953ab291793, type: 3}
   enemy: {fileID: 369728353}
   ally: {fileID: 1563256371}
   table: {fileID: 186144857}
