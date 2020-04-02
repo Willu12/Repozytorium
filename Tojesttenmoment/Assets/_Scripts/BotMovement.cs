@@ -21,7 +21,13 @@ public class BotMovement : MonoBehaviour
         if (ball.transform.position.x < xDetection && !playerCol.activeSelf)
         {
             desiredPosition = new Vector3(transform.position.x, ball.transform.position.y, ball.transform.position.z);
-        } else desiredPosition = new Vector3(transform.position.x, standardY, 0f);
+            smoothSpeed = 0.2f;
+        }
+        else
+        {
+            desiredPosition = new Vector3(transform.position.x, standardY, 0f);
+            smoothSpeed = 0.03f;
+        }
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
        
         transform.position = smoothedPosition;

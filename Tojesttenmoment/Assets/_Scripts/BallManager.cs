@@ -9,8 +9,10 @@ public class BallManager : MonoBehaviour
 {
     // Start is called before the first frame update
     Rigidbody rb;
+    AudioSource audioSource;
+    public AudioClip impact1;
     bool hit;
-    public GameObject enemy, ally, stmp, btmp;
+    public GameObject enemy, ally, table, stmp, btmp;
     private TextMeshProUGUI scoreText, bestText;
     float change = 1f;
     int points=0, best;
@@ -19,7 +21,7 @@ public class BallManager : MonoBehaviour
         best = PlayerPrefs.GetInt("BestScore", 0);
         hit = false;
         rb = GetComponent<Rigidbody>();
-
+        audioSource = GetComponent<AudioSource>();
         scoreText = stmp.GetComponent<TextMeshProUGUI>();
         bestText = btmp.GetComponent<TextMeshProUGUI>();
         scoreText.text = points.ToString();
@@ -44,11 +46,15 @@ public class BallManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider col)
     {
+        if (col.gameObject.tag == "Table")
+        {
+            audioSource.PlayOneShot(impact1);
+        }
         if (col.gameObject.tag == "Wall")
         {
             rb.velocity = Vector3.zero;
             
-            rb.AddForce(new Vector3(1.5f*change, -0.3f, 0f));
+            rb.AddForce(new Vector3(1.5f*change, Random.Range(-1.2f, -0.3f), 0f));
 
             //BALANCER
             float posz = transform.position.z;
@@ -102,7 +108,7 @@ public class BallManager : MonoBehaviour
             rb.useGravity = true;
 
             rb.velocity = Vector3.zero;
-            rb.AddForce(new Vector3(-1.5f*change, -0.3f, 0));
+            rb.AddForce(new Vector3(-1.5f*change, Random.Range(-1.2f, -0.3f), 0));
 
             //Z BALANCER
             float posz = transform.position.z;
