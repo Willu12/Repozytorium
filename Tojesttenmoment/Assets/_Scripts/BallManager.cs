@@ -10,7 +10,8 @@ public class BallManager : MonoBehaviour
     // Start is called before the first frame update
     Rigidbody rb;
     AudioSource audioSource;
-    public AudioClip impact1, impact2;
+    public AudioClip hit1, hit2, hit3, hit4;
+    public AudioClip impact1, impact2, impact3, impact4;
     bool hit;
     public GameObject enemy, ally, table, stmp, btmp;
     private TextMeshProUGUI scoreText, bestText;
@@ -39,6 +40,50 @@ public class BallManager : MonoBehaviour
         rb.useGravity = false;
     }
 
+    private void PlaySound(string type)
+    {
+        int i = Random.Range(1, 5);
+        if(type == "hit")
+        {
+            if (i == 1)
+            {
+                audioSource.PlayOneShot(hit1);
+            } else
+            if (i == 2)
+            {
+                audioSource.PlayOneShot(hit2);
+            } else
+            if (i == 3)
+            {
+                audioSource.PlayOneShot(hit3);
+            } else
+            if (i == 4)
+            {
+                audioSource.PlayOneShot(hit4);
+            }
+        } else
+        if(type == "impact")
+        {
+            if (i == 1)
+            {
+                audioSource.PlayOneShot(impact1);
+            } else
+            if (i == 2)
+            {
+                audioSource.PlayOneShot(impact2);
+            } else
+            if (i == 3)
+            { 
+                audioSource.PlayOneShot(impact3);
+            } else
+            if (i == 4)
+            {
+                audioSource.PlayOneShot(impact4);
+            }
+        }
+        return;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -48,11 +93,11 @@ public class BallManager : MonoBehaviour
     {
         if (col.gameObject.tag == "Table")
         {
-            audioSource.PlayOneShot(impact1);
+            PlaySound("impact");
         }
         if (col.gameObject.tag == "Wall")
         {
-            audioSource.PlayOneShot(impact2);
+            PlaySound("hit");
 
 
             rb.velocity = Vector3.zero;
@@ -98,7 +143,8 @@ public class BallManager : MonoBehaviour
     {
         if (hit)
         {
-            if(rb.useGravity == true)
+            PlaySound("hit");
+            if (rb.useGravity == true)
             {
                 points++;
                 scoreText.text = points.ToString();
