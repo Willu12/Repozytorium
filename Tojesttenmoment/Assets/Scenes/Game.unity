@@ -402,14 +402,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481610e9453db9944b3a075e40a603cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit1: {fileID: 8300000, guid: b5986eaea25aa604aaf58aba0f9d79e0, type: 3}
-  hit2: {fileID: 8300000, guid: dc89963855a9c064ea9ae9fde03ffffa, type: 3}
-  hit3: {fileID: 8300000, guid: ed37bc2625d05364082c92533c312a1e, type: 3}
-  hit4: {fileID: 8300000, guid: 0e57fe239dad7a0439762ccbf442c6e3, type: 3}
-  impact1: {fileID: 8300000, guid: d82da668769af0a4bab8ba9bef27363a, type: 3}
-  impact2: {fileID: 8300000, guid: a21c6c9619905724fa9b2c1ad9eaf9e7, type: 3}
-  impact3: {fileID: 8300000, guid: a11195eb82ef6f046af2c97f1a4cc350, type: 3}
-  impact4: {fileID: 8300000, guid: 4185da3df757c72429166739afef9d43, type: 3}
+  hit1: {fileID: 8300000, guid: c7ad37a979b68364bb853828ba665a11, type: 3}
+  hit2: {fileID: 8300000, guid: e95a0141de15b5b46934f48be9f61787, type: 3}
+  hit3: {fileID: 8300000, guid: 31903ce792dd5054db392664847c0cde, type: 3}
+  hit4: {fileID: 8300000, guid: 300c62abfcd5273408ab33db7b0eb067, type: 3}
+  impact1: {fileID: 8300000, guid: 9961d1e06c4b9b04095fcf4091a3767b, type: 3}
+  impact2: {fileID: 8300000, guid: 4fd456f70bea5634eb21a29d8301a7a5, type: 3}
+  impact3: {fileID: 8300000, guid: b2b123007f0720241b8871fd235882e8, type: 3}
+  impact4: {fileID: 8300000, guid: fded787a3e0298645a752679703c66db, type: 3}
   enemy: {fileID: 369728353}
   ally: {fileID: 1563256371}
   table: {fileID: 186144857}
