@@ -67,7 +67,6 @@ public class BallManager : MonoBehaviour
             change += 0.025f;
             hit = false;
             ally.SetActive(true);
-            enemy.SetActive(false);
         } 
         if (col.gameObject.tag == "Player")
         {

@@ -6,7 +6,7 @@ public class Mimic : MonoBehaviour
 {
     public GameObject source;
     public bool x, y, z;
-
+    //Vector3 desiredPos;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -18,5 +18,6 @@ public class Mimic : MonoBehaviour
             transform.position = new Vector3(transform.position.x, source.transform.position.y, transform.position.z);
         if (z == true)
             transform.position = new Vector3(transform.position.x, transform.position.y, source.transform.position.z);
+        //desiredPos = transform.position;
     }
 }
