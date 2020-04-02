@@ -10,7 +10,7 @@ public class BallManager : MonoBehaviour
     // Start is called before the first frame update
     Rigidbody rb;
     AudioSource audioSource;
-    public AudioClip impact1;
+    public AudioClip impact1, impact2;
     bool hit;
     public GameObject enemy, ally, table, stmp, btmp;
     private TextMeshProUGUI scoreText, bestText;
@@ -52,6 +52,9 @@ public class BallManager : MonoBehaviour
         }
         if (col.gameObject.tag == "Wall")
         {
+            audioSource.PlayOneShot(impact2);
+
+
             rb.velocity = Vector3.zero;
             
             rb.AddForce(new Vector3(1.5f*change, Random.Range(-1.2f, -0.3f), 0f));
