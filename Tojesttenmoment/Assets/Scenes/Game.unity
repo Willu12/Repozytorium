@@ -409,7 +409,7 @@ MonoBehaviour:
   impact1: {fileID: 8300000, guid: 19fa3edf4028a6648bd4aa004912b923, type: 3}
   impact2: {fileID: 8300000, guid: 73fdc5f5ee5fcd44e9f91953ab291793, type: 3}
   impact3: {fileID: 8300000, guid: b0e248aceb02e0c4aa61647cedddee5c, type: 3}
-  impact4: {fileID: 8300000, guid: 4a5e02272ad853a47950aec6b800058e, type: 3}
+  impact4: {fileID: 8300000, guid: 4185da3df757c72429166739afef9d43, type: 3}
   enemy: {fileID: 369728353}
   ally: {fileID: 1563256371}
   table: {fileID: 186144857}
