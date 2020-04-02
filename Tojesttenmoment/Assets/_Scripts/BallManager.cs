@@ -12,7 +12,7 @@ public class BallManager : MonoBehaviour
     AudioSource audioSource;
     public AudioClip hit1, hit2, hit3, hit4;
     public AudioClip impact1, impact2, impact3, impact4;
-    bool hit;
+    bool hit,sound;
     public GameObject enemy, ally, table, stmp, btmp;
     private TextMeshProUGUI scoreText, bestText;
     public float change = 1f;
@@ -93,11 +93,17 @@ public class BallManager : MonoBehaviour
     {
         if (col.gameObject.tag == "Table")
         {
-            PlaySound("impact");
+            if(sound)
+            {
+                PlaySound("impact");
+                sound = false;
+            }
+            
         }
         if (col.gameObject.tag == "Wall")
         {
             PlaySound("hit");
+            sound = true;
 
 
             rb.velocity = Vector3.zero;
@@ -144,6 +150,7 @@ public class BallManager : MonoBehaviour
         if (hit)
         {
             PlaySound("hit");
+            sound = true;
             if (rb.useGravity == true)
             {
                 points++;
