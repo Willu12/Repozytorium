@@ -15,7 +15,10 @@ public class BallManager : MonoBehaviour
     bool hit,sound;
     public GameObject enemy, ally, table, stmp, btmp;
     private TextMeshProUGUI scoreText, bestText;
+    public TrailRenderer tr;
+    public GameObject Canvas;
     public float change = 1f;
+
     int points=0, best;
     void Start()
     {
@@ -103,6 +106,7 @@ public class BallManager : MonoBehaviour
         if (col.gameObject.tag == "Wall")
         {
             PlaySound("hit");
+            tr.Clear();
             sound = true;
 
 
@@ -136,7 +140,7 @@ public class BallManager : MonoBehaviour
         }
         if (col.gameObject.tag == "Floor")
         {
-            SceneManager.LoadScene("Game");
+            Canvas.GetComponent<GameOver>().over();
         }
     }
 
@@ -150,6 +154,7 @@ public class BallManager : MonoBehaviour
         if (hit)
         {
             PlaySound("hit");
+            tr.Clear();
             sound = true;
             if (rb.useGravity == true)
             {
