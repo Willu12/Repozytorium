@@ -32,6 +32,6 @@ public class GameOver : MonoBehaviour
     {
         Time.timeScale = 1f;
         Debug.Log("MENU!");
-        //SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Menu");
     }
 }
