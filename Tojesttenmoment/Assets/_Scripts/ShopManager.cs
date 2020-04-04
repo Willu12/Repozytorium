@@ -32,9 +32,9 @@ public class ShopManager : MonoBehaviour
     {  
         materialball.color = ballcolors[0];
         materialpaddle.color = paddlecolors[0];
-        isboughttrail = PlayerPrefsX.GetBoolArray("isboughttrail");
-        isboughtball = PlayerPrefsX.GetBoolArray("isboughtpaddle");
-        isboughtpaddle = PlayerPrefsX.GetBoolArray("isboughtpaddle");
+      //  isboughttrail = PlayerPrefsX.GetBoolArray("isboughttrail");
+      //  isboughtball = PlayerPrefsX.GetBoolArray("isboughtpaddle");
+      //  isboughtpaddle = PlayerPrefsX.GetBoolArray("isboughtpaddle");
 
     }
 
@@ -113,12 +113,12 @@ public class ShopManager : MonoBehaviour
     }
     private void Boughtballs()
     {
-        for (int i = 0; i<balltoggles.Length; i++)
+        for (int n = 0; n<balltoggles.Length; n++)
         {
-            if(isboughtball[i]==true)
+            if(isboughtball[n]==true)
             {
-                balltoggles[i].interactable= true;
-                ballbuttons1[i].SetActive(false);
+                balltoggles[n].interactable= true;
+                ballbuttons1[n].SetActive(false);
             }
         }
     }
@@ -136,7 +136,7 @@ public class ShopManager : MonoBehaviour
         */
         ballbuttons1[position].SetActive(false);
         isboughtball[position] = true;
-        PlayerPrefsX.SetBoolArray("isboughtball", isboughtball);
+       // PlayerPrefsX.SetBoolArray("isboughtball", isboughtball);
     }
 
     private void Boughtpaddles()
@@ -163,7 +163,7 @@ public class ShopManager : MonoBehaviour
         */
         paddlebuttons[position].SetActive(false);
         isboughtpaddle[position] = true;
-        PlayerPrefsX.SetBoolArray("isboughtpaddle", isboughtpaddle);
+        //PlayerPrefsX.SetBoolArray("isboughtpaddle", isboughtpaddle);
     }
     public void Leaveshop()
     {
@@ -197,7 +197,7 @@ public class ShopManager : MonoBehaviour
         isboughttrail[position] = true;
         
         
-        PlayerPrefsX.SetBoolArray("isboughttrail", isboughttrail);
+       // PlayerPrefsX.SetBoolArray("isboughttrail", isboughttrail);
     }
 
 }
