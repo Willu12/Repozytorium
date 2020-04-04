@@ -18,10 +18,13 @@ public class BallManager : MonoBehaviour
     public TrailRenderer tr;
     public GameObject Canvas;
     public float change = 1f;
+    public Color[] starttrails;
+    public Color[] endtrails;
 
-    int points=0, best;
+    int points=0, best, trailindex;
     void Start()
     {
+        trailindex = PlayerPrefs.GetInt("trailindex", 0);
         best = PlayerPrefs.GetInt("BestScore", 0);
         hit = false;
         rb = GetComponent<Rigidbody>();
@@ -41,6 +44,13 @@ public class BallManager : MonoBehaviour
         Physics.gravity = new Vector3(0f, -9.8f, 0f);
         rb.angularVelocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f)*10;
         rb.useGravity = false;
+        Colortrail();
+    }
+
+    private void Colortrail()
+    {
+        tr.startColor = starttrails[trailindex];
+        tr.endColor = endtrails[trailindex];
     }
 
     private void PlaySound(string type)
