@@ -169,6 +169,30 @@ public class ShopManager : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
         Debug.Log("trailindex to" + trailindex);
+        for (int p = 0; p < trailtoggles.Length; p++)
+        {
+            if (trailtoggles[p].isOn == true)
+            {
+                trailindex = p;
+                PlayerPrefs.SetInt("trailindex", trailindex);
+            }
+        }
+        for (int l = 0; l < paddletoggles.Length; l++)
+        {
+            if (paddletoggles[l].isOn == true)
+            {
+                materialpaddle.color = paddlecolors[l];
+            }
+        }
+        for (int k = 0; k < balltoggles.Length; k++)
+        {
+            if (balltoggles[k].isOn == true)
+            {
+                materialball.color = ballcolors[k];
+            }
+        }
+
+
     }
 
     private void Boughttrails()
