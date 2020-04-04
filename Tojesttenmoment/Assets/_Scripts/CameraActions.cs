@@ -8,13 +8,15 @@ public class CameraActions : MonoBehaviour
 
     public float smoothSpeed = 0.075f;
     public Vector3 offset;
-    public GameObject winGlasses;
-
     private Vector3 desiredPosition;
+
+    private bool finish;
+
 
     void FixedUpdate()
     {
-        if (ball.transform.position.x > -1.5f && !winGlasses.activeSelf) //Win Glasses means game over
+        finish = GameObject.Find("Canvas").GetComponent<GameOver>().fin;
+        if (ball.transform.position.x > -1.5f && !finish) //Win Glasses means game over
         {
             desiredPosition = target.position + offset;
         } else desiredPosition = new Vector3(target.position.x, target.position.y, 0f) + offset;

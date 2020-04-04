@@ -20,6 +20,7 @@ public class BallManager : MonoBehaviour
     public float change = 1f;
     public Color[] starttrails;
     public Color[] endtrails;
+    bool once = false;
 
     int points=0, best, trailindex;
     void Start()
@@ -148,8 +149,12 @@ public class BallManager : MonoBehaviour
             ally.SetActive(false);
             enemy.SetActive(true);        
         }
-        if (col.gameObject.tag == "Floor")
+        if (col.gameObject.tag == "Floor" && !once)
         {
+            once = true;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.useGravity = false;
             Canvas.GetComponent<GameOver>().over();
         }
     }

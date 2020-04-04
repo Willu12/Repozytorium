@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
 {
 
     public TextMeshProUGUI best;
+    public Animator CamAnim, uianim, logoanim;
+
 
     private void Start()
     {
@@ -17,9 +19,20 @@ public class MainMenu : MonoBehaviour
     }
 
 
+    IEnumerator anim()
+    {
+        uianim.SetTrigger("SceneChange");
+        logoanim.enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        CamAnim.enabled = true;
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Game");
+    }
+
+
     public void OnMouseDown()
     {
-        SceneManager.LoadScene("Game");
+        StartCoroutine(anim());
     }
 
     public void Credits()
