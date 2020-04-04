@@ -136,6 +136,7 @@ public class ShopManager : MonoBehaviour
         */
         ballbuttons1[position].SetActive(false);
         isboughtball[position] = true;
+        PlayerPrefsX.SetBoolArray("isboughtball", isboughtball);
     }
 
     private void Boughtpaddles()
@@ -162,10 +163,11 @@ public class ShopManager : MonoBehaviour
         */
         paddlebuttons[position].SetActive(false);
         isboughtpaddle[position] = true;
+        PlayerPrefsX.SetBoolArray("isboughtpaddle", isboughtpaddle);
     }
     public void Leaveshop()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Menu");
         Debug.Log("trailindex to" + trailindex);
     }
 
@@ -193,8 +195,8 @@ public class ShopManager : MonoBehaviour
         */
         trailbuttons[position].SetActive(false);
         isboughttrail[position] = true;
-        PlayerPrefsX.SetBoolArray("isboughtball", isboughtball);
-        PlayerPrefsX.SetBoolArray("isboughtpaddle", isboughtpaddle);
+        
+        
         PlayerPrefsX.SetBoolArray("isboughttrail", isboughttrail);
     }
 

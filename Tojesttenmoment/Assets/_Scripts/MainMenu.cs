@@ -47,6 +47,6 @@ public class MainMenu : MonoBehaviour
 
     public void Shop()
     {
-        Debug.Log("SHOP!");
+        SceneManager.LoadScene("Shop");
     }
 }
