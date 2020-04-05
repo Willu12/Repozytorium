@@ -32,9 +32,9 @@ public class ShopManager : MonoBehaviour
     {  
         materialball.color = ballcolors[0];
         materialpaddle.color = paddlecolors[0];
-      //  isboughttrail = PlayerPrefsX.GetBoolArray("isboughttrail");
-      //  isboughtball = PlayerPrefsX.GetBoolArray("isboughtpaddle");
-      //  isboughtpaddle = PlayerPrefsX.GetBoolArray("isboughtpaddle");
+        isboughttrail = PlayerPrefsX.GetBoolArray("isboughttrail", false, 9);
+        isboughtball = PlayerPrefsX.GetBoolArray("isboughtpaddle", false, 9);
+        isboughtpaddle = PlayerPrefsX.GetBoolArray("isboughtpaddle", false, 9);
 
     }
 
@@ -136,7 +136,7 @@ public class ShopManager : MonoBehaviour
         */
         ballbuttons1[position].SetActive(false);
         isboughtball[position] = true;
-       // PlayerPrefsX.SetBoolArray("isboughtball", isboughtball);
+        PlayerPrefsX.SetBoolArray("isboughtball", isboughtball);
     }
 
     private void Boughtpaddles()
@@ -163,7 +163,7 @@ public class ShopManager : MonoBehaviour
         */
         paddlebuttons[position].SetActive(false);
         isboughtpaddle[position] = true;
-        //PlayerPrefsX.SetBoolArray("isboughtpaddle", isboughtpaddle);
+        PlayerPrefsX.SetBoolArray("isboughtpaddle", isboughtpaddle);
     }
     public void Leaveshop()
     {
@@ -221,7 +221,7 @@ public class ShopManager : MonoBehaviour
         isboughttrail[position] = true;
         
         
-       // PlayerPrefsX.SetBoolArray("isboughttrail", isboughttrail);
+        PlayerPrefsX.SetBoolArray("isboughttrail", isboughttrail);
     }
 
 }
