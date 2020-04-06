@@ -21,12 +21,10 @@ public class BallManager : MonoBehaviour
     public Color[] starttrails;
     public Color[] endtrails;
     bool once = false;
-    int stars;
 
     int points=0, best, trailindex;
     void Start()
     {
-        PlayerPrefs.GetInt("stars", 99999);
         trailindex = PlayerPrefs.GetInt("trailindex", 0);
         best = PlayerPrefs.GetInt("BestScore", 0);
         hit = false;
