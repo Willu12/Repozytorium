@@ -7,7 +7,7 @@ public class BotMovement : MonoBehaviour
     public GameObject ball;
     public float xDetection, standardY;
     private Vector3 desiredPosition;
-    private float smoothSpeed, change;
+    private float smoothSpeed;
     public GameObject playerCol; //CHECK IF OBJECT IS ACTIVE TO TRACK OR NOT TO TRACK BALL POSITION
 
 
@@ -18,17 +18,15 @@ public class BotMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        change = ball.GetComponent<BallManager>().change;
-
         if (ball.transform.position.x < xDetection && !playerCol.activeSelf)
         {
             desiredPosition = new Vector3(transform.position.x, ball.transform.position.y, ball.transform.position.z);
-            smoothSpeed = 0.2f*change;
+            smoothSpeed = 0.2f*Time.timeScale;
         }
         else
         {
             desiredPosition = new Vector3(transform.position.x, standardY, 0f);
-            smoothSpeed = 0.03f*change;
+            smoothSpeed = 0.03f*Time.timeScale;
         }
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
        
