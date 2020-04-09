@@ -93,10 +93,9 @@ public class BallManager : MonoBehaviour
     private void Update()
     {
         Vector3 tilt = Input.acceleration;
-
-        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, 20 * tilt.x);
-        //else Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, 0f);
-
+        if (tilt.x >= 0.15f || tilt.x <= -0.15f)
+            Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, 20 * tilt.x);
+        else Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, 0f);
     }
 
     private void OnTriggerEnter(Collider col)
