@@ -24,6 +24,8 @@ public class BallManager : MonoBehaviour
     bool once = false;
     bool tablecheck = true;
 
+    bool playerAccelerometer = true;
+
     Vector3 hitforce;
 
     int points = 0;
@@ -82,7 +84,7 @@ public class BallManager : MonoBehaviour
         if (transform.position.x > GameObject.FindWithTag("MainCamera").transform.position.x + 1f && !once)
             End();
         Vector3 tilt = Input.acceleration;
-        if ((tilt.x >= 0.15f || tilt.x <= -0.15f) && !tablecheck && !GameObject.FindWithTag("Player").activeSelf)
+        if ((tilt.x >= 0.15f || tilt.x <= -0.15f) && !tablecheck && playerAccelerometer)
             Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, 20 * tilt.x);
         else Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, 0f);
     }
@@ -115,6 +117,8 @@ public class BallManager : MonoBehaviour
                 zbalancer(0.1f, 0.5f);
             else if (posz>3f)
                 zbalancer(-0.1f, -0.5f);
+
+            playerAccelerometer = false;
         } 
         if (col.gameObject.tag == "Floor" && !once)
         {
@@ -141,7 +145,7 @@ public class BallManager : MonoBehaviour
     public void OnMouseDown()
     {
         Debug.Log("Mouse Clicked");
-        if (transform.position.x>0f && tablecheck && !once)
+        if (transform.position.x>0f && tablecheck && !once) //!once is just for disabling movement while animating
         {
             PlaySound("hit");
             tr.Clear();
@@ -173,6 +177,8 @@ public class BallManager : MonoBehaviour
                 zbalancer(0.1f, 0.5f);
             else if (posz>3f)
                 zbalancer(-0.1f, -0.5f);
+
+            playerAccelerometer = true;
         }
     }
 
