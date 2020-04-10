@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
   - Floor
   - Table
   - Music
+  - Bot
   layers:
   - Default
   - TransparentFX

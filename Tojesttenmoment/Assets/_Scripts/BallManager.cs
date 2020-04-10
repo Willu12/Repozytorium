@@ -14,7 +14,7 @@ public class BallManager : MonoBehaviour
     public AudioClip impact1, impact2, impact3;
     public AudioClip recordBeaten;
 
-    public GameObject bot, player, table, stmp, btmp;
+    public GameObject table, stmp, btmp;
     
     public TrailRenderer tr;
     public GameObject Canvas;
@@ -23,24 +23,18 @@ public class BallManager : MonoBehaviour
 
     bool once = false;
     bool tablecheck = true;
-    bool hit;
-    bool sound;
 
     Vector3 hitforce;
 
     int points = 0;
     int best;
 
-    public bool ResetBest = false;
-
     void Start()
     {
-        if (ResetBest == true)
-            ResetRecord();
         Time.timeScale = 1f;
         hitforce = new Vector3(-15f, 3f, 0f);
         best = PlayerPrefs.GetInt("BestScore", 0);
-        hit = false;
+
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         scoreText = stmp.GetComponent<TextMeshProUGUI>();
@@ -59,15 +53,8 @@ public class BallManager : MonoBehaviour
         rb.useGravity = false;      
     }
 
-    private void ResetRecord()
-    {
-        PlayerPrefs.SetInt("BestScore", 0);
-        ResetBest = false;
-    }
-
     private void PlaySound(string type)
     {
-        
         if(type == "hit")
         {
            audioSource.PlayOneShot(hit1);
@@ -92,29 +79,27 @@ public class BallManager : MonoBehaviour
 
     private void Update()
     {
+        if (transform.position.x > GameObject.FindWithTag("MainCamera").transform.position.x + 1f && !once)
+            End();
         Vector3 tilt = Input.acceleration;
-        if (tilt.x >= 0.15f || tilt.x <= -0.15f)
+        if ((tilt.x >= 0.15f || tilt.x <= -0.15f) && !tablecheck && !GameObject.FindWithTag("Player").activeSelf)
             Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, 20 * tilt.x);
         else Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, 0f);
     }
 
-    private void OnTriggerEnter(Collider col)
+    private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Table")
         {
+            Debug.Log("Collided Table");
+            PlaySound("impact");
             tablecheck = true;
-            if(sound)
-            {
-                PlaySound("impact");
-                sound = false;
-            }
-            
         }
-        if (col.gameObject.tag == "Wall")
+        if (col.gameObject.tag == "Bot")
         {
+            Debug.Log("Collided Bot");
             PlaySound("hit");
             tr.Clear();
-            sound = true;
 
             bforce();
 
@@ -130,26 +115,22 @@ public class BallManager : MonoBehaviour
                 zbalancer(0.1f, 0.5f);
             else if (posz>3f)
                 zbalancer(-0.1f, -0.5f);
-            
-
-            hit = false;
-            player.SetActive(true);
         } 
-        if (col.gameObject.tag == "Player")
-        {
-            hit = true;
-            player.SetActive(false);
-            bot.SetActive(true);        
-        }
         if (col.gameObject.tag == "Floor" && !once)
         {
-            Time.timeScale = 1f;
-            once = true;
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            rb.useGravity = false;
-            Canvas.GetComponent<GameOver>().over();
+            End();
         }
+    }
+
+    void End()
+    {
+        Debug.Log("Collided Floor");
+        Time.timeScale = 1f;
+        once = true;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.useGravity = false;
+        Canvas.GetComponent<GameOver>().over();
     }
 
     private void zbalancer(float rfrom, float rto)
@@ -157,13 +138,13 @@ public class BallManager : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Random.Range(rfrom, rto)*12);
     }
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
-        if (hit && tablecheck)
+        Debug.Log("Mouse Clicked");
+        if (transform.position.x>0f && tablecheck && !once)
         {
             PlaySound("hit");
             tr.Clear();
-            sound = true;
             if (rb.useGravity == true)
             {
                 points++;
@@ -192,9 +173,6 @@ public class BallManager : MonoBehaviour
                 zbalancer(0.1f, 0.5f);
             else if (posz>3f)
                 zbalancer(-0.1f, -0.5f);
-            
-            player.SetActive(false);
-            hit = false;
         }
     }
 

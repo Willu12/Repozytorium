@@ -8,8 +8,6 @@ public class BotMovement : MonoBehaviour
     public float xDetection, standardY;
     private Vector3 desiredPosition;
     private float smoothSpeed, smoothRotSpeed;
-    public GameObject playerCol; //CHECK IF OBJECT IS ACTIVE TO TRACK OR NOT TO TRACK BALL POSITION
-
 
     private void Start()
     {
@@ -18,7 +16,7 @@ public class BotMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (ball.transform.position.x < xDetection && !playerCol.activeSelf)
+        if (ball.transform.position.x < xDetection)
         {
             desiredPosition = new Vector3(transform.position.x, ball.transform.position.y, ball.transform.position.z);
             if (desiredPosition.y < 2.5f)
