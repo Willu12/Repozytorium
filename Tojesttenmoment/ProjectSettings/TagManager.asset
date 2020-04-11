@@ -8,6 +8,7 @@ TagManager:
   - Table
   - Music
   - Bot
+  - Ball
   layers:
   - Default
   - TransparentFX

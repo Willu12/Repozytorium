@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
     IEnumerator anim()
     {
         uianim.SetTrigger("SceneChange");
-        logoanim.enabled = true;
+        logoanim.SetTrigger("LogoOut");
         yield return new WaitForSeconds(0.5f);
         CamAnim.enabled = true;
         yield return new WaitForSeconds(2f);

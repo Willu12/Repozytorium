@@ -19,6 +19,8 @@ public class BallManager : MonoBehaviour
     public TrailRenderer tr;
     public GameObject Canvas;
 
+    public float zForce;
+
     public float progresStep = 0.02f;
 
     bool once = false;
@@ -95,7 +97,7 @@ public class BallManager : MonoBehaviour
         {
             Debug.Log("Collided Table");
             PlaySound("impact");
-            tablecheck = true;
+            tablecheck = true;              
         }
         if (col.gameObject.tag == "Bot")
         {
@@ -107,15 +109,15 @@ public class BallManager : MonoBehaviour
 
             //Z BALANCER
             float posz = transform.position.z;
-            if (posz<1.5f && posz>-1.5f)
+            if (posz<=1.5f && posz>=-1.5f)
                 zbalancer(-0.35f, 0.35f);
-            else if (posz<-1.5f && posz>-3f)
+            else if (posz<=-1.5f && posz>=-3f)
                 zbalancer(0f, 0.4f);
-            else if (posz>1.5f && posz<3f)
+            else if (posz>=1.5f && posz<=3f)
                 zbalancer(-0.4f, 0f);
-            else if (posz<-3f)
+            else if (posz<=-3f)
                 zbalancer(0.1f, 0.5f);
-            else if (posz>3f)
+            else if (posz>=3f)
                 zbalancer(-0.1f, -0.5f);
 
             playerAccelerometer = false;
@@ -139,7 +141,8 @@ public class BallManager : MonoBehaviour
 
     private void zbalancer(float rfrom, float rto)
     {
-        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Random.Range(rfrom, rto)*12);
+        zForce = Random.Range(rfrom, rto);
+        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, zForce*12);
     }
 
     public void OnMouseDown()
@@ -167,15 +170,15 @@ public class BallManager : MonoBehaviour
 
             //Z BALANCER
             float posz = transform.position.z;
-            if (posz<1.5f && posz>-1.5f)
+            if (posz<=1.5f && posz>=-1.5f)
                 zbalancer(-0.35f, 0.35f);
-            else if (posz<-1.5f && posz>-3f)
+            else if (posz<=-1.5f && posz>=-3f)
                 zbalancer(0f, 0.4f);
-            else if (posz>1.5f && posz<3f)
+            else if (posz>=1.5f && posz<=3f)
                 zbalancer(-0.4f, 0f);
-            else if (posz<-3f)
+            else if (posz<=-3f)
                 zbalancer(0.1f, 0.5f);
-            else if (posz>3f)
+            else if (posz>=3f)
                 zbalancer(-0.1f, -0.5f);
 
             playerAccelerometer = true;

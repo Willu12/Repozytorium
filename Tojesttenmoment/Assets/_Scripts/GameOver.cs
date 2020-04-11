@@ -41,6 +41,7 @@ public class GameOver : MonoBehaviour
     IEnumerator CMenu()
     {
         GameObject.Find("/Main Camera").GetComponent<Animator>().enabled = true;
+        this.GetComponent<Animator>().SetTrigger("disappear");
         yield return new WaitForSeconds(1f);
         trail.SetActive(false);
         GameObject.Find("/Ball").GetComponent<Transform>().transform.position = new Vector3(10f, 5f, 0f);
@@ -53,7 +54,7 @@ public class GameOver : MonoBehaviour
 
     public void hide()
     {
-        GameOverUI.SetActive(false);
+        GameOverUI.GetComponent<Animator>().SetTrigger("PanelOut");
     }
 
 
