@@ -18,6 +18,7 @@ public class BallManager : MonoBehaviour
     
     public TrailRenderer tr;
     public GameObject Canvas;
+    public GameObject Tutorial;
 
     public float zForce;
 
@@ -148,7 +149,7 @@ public class BallManager : MonoBehaviour
     public void OnMouseDown()
     {
         Debug.Log("Mouse Clicked");
-        if (transform.position.x>0f && tablecheck && !once) //!once is just for disabling movement while animating
+        if (transform.position.x > 0f && tablecheck && !once && Tutorial.activeSelf == false) //!once is just for disabling movement while animating
         {
             PlaySound("hit");
             tr.Clear();
