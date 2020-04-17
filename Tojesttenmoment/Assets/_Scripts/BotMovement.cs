@@ -20,15 +20,6 @@ public class BotMovement : MonoBehaviour
         if (ball.transform.position.x <= xDetection && ball.GetComponent<Rigidbody>().velocity.x<0f)
         {
             desiredPosition = new Vector3(standardX, ball.transform.position.y, ball.transform.position.z);
-            //LIMITER
-            if (desiredPosition.y < 2.5f)
-                desiredPosition.y = 2.5f;
-            else if (desiredPosition.z < -13f)
-                desiredPosition.z = -13f;
-            else if (desiredPosition.z > 13f)
-                desiredPosition.z = 13f;
-
-
             smoothSpeed = 0.2f;
         }
         else
@@ -38,6 +29,13 @@ public class BotMovement : MonoBehaviour
             smoothSpeed = 0.03f;
         }
         smoothRotSpeed = 0.1f;
+        //LIMITER
+        if (desiredPosition.y < 2.5f)
+            desiredPosition.y = 2.5f;
+        if (desiredPosition.z < -13f)
+            desiredPosition.z = -13f;
+        else if (desiredPosition.z > 13f)
+            desiredPosition.z = 13f;
 
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
      

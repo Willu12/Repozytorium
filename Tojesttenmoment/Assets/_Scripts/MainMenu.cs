@@ -42,6 +42,7 @@ public class MainMenu : MonoBehaviour
 
     public void Settings()
     {
+        PlayerPrefs.SetInt("SeenTut", 0);
         Debug.Log("SETTINGS!");
     }
 
