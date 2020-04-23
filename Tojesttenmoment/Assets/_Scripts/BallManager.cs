@@ -54,7 +54,7 @@ public class BallManager : MonoBehaviour
         }
 
         Physics.gravity = new Vector3(0f, -10f, 0f);
-        rb.angularVelocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f)*10;
+        //rb.angularVelocity = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f)*10;
         rb.useGravity = false;      
     }
 
@@ -104,7 +104,7 @@ public class BallManager : MonoBehaviour
         {
             Debug.Log("Collided Bot");
             PlaySound("hit");
-            tr.Clear();
+            //tr.Clear();
 
             bforce();
 
@@ -149,10 +149,10 @@ public class BallManager : MonoBehaviour
     public void OnMouseDown()
     {
         Debug.Log("Mouse Clicked");
-        if (transform.position.x > 0f && tablecheck && !once && Tutorial.activeSelf == false) //!once is just for disabling movement while animating
+        if (transform.position.x > 8f && tablecheck && !once && Tutorial.activeSelf == false) //!once is just for disabling movement while animating
         {
             PlaySound("hit");
-            tr.Clear();
+            //tr.Clear();
             if (rb.useGravity == true)
             {
                 points++;

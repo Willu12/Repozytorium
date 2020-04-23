@@ -6,7 +6,7 @@ public class SpectatorBehav : MonoBehaviour
 {
 
     private Color color;
-    private string[] defColors = {"yellow", "lime"}; //{"red", "blue", "darkblue", "lightblue", "purple", "yellow", "lime", "fuchsia", "orange", "brown", "maroon", "green", "navy", "teal", "magenta"};
+    private string[] defColors = {"yellow", "lime", "#674213"}; //{"red", "blue", "darkblue", "lightblue", "purple", "yellow", "lime", "fuchsia", "orange", "brown", "maroon", "green", "navy", "teal", "magenta"};
 
     private void Start()
     {
