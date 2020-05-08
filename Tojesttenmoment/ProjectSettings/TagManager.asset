@@ -9,6 +9,8 @@ TagManager:
   - Music
   - Bot
   - Ball
+  - Wall
+  - SpectatorsFront
   layers:
   - Default
   - TransparentFX

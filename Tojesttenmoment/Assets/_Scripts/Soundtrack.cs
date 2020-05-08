@@ -13,7 +13,7 @@ public class Soundtrack : MonoBehaviour
     void Awake()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Music");
+        GameObject[] objs = GameObject.FindGameObjectsWithTag(gameObject.tag);
         if (objs.Length > 1)
         {
             Destroy(this.gameObject);
